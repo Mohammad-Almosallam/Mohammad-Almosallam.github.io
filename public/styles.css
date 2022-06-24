@@ -26,6 +26,45 @@ h1 {
     height: 100%;
 }
 
+/* --- Dark theme button animation --- */
+
+.contrast-icon {
+    --dark: #000000;
+    --light: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all .5s !important;
+    color: var(--dark);
+}
+
+
+.contrast-icon:hover {
+    color: var(--light);
+    transform: scale(1.1);
+}
+
+.contrast-icon::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--dark);
+    transform: rotate(45deg);
+    height: 200px;
+    width: 200px;
+    top: 100%;
+    right: 100%;
+    transition: all .7s;
+}
+
+
+.contrast-icon:hover::before {
+    top: -30px;
+    right: -30px;
+}
+
+/* ------------------------- */
+
 .footer {
     text-align: center;
     margin: 0;
@@ -69,4 +108,9 @@ ul {
     padding: 10px;
     cursor: pointer;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.7s;
+}
+
+.icons:hover {
+    transform: scale(1.1);
 }
