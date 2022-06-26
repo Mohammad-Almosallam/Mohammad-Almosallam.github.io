@@ -8,18 +8,18 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-
+pages = ['Home','About','Contact']
 
 app.get("/",function(req,res){
-    res.render("home")
+    res.render("home",{title:pages[0]})
 })
 
 app.get("/about",function(req,res){
-    res.render("about")
+    res.render("about",{title:pages[1]})
 })
 
 app.get("/contact",function(req,res){
-    res.render("contact")
+    res.render("contact",{title:pages[2]})
 })
 
 

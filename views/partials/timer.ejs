@@ -1,0 +1,44 @@
+<!-- Timer Implementation -->
+<script>
+    const startingMinutes = 0.1;
+    let time = startingMinutes * 60;
+    let isPaused = false;
+    const countdown = document.getElementById('countdown');
+
+    let timer = setInterval(updateCountdown,1000)
+    document.getElementById("pause").addEventListener("click",pauseTimer);
+    document.getElementById("play").addEventListener("click",playTimer);
+    window.addEventListener("keypress",keyPress);
+    
+    function updateCountdown(){
+        if(time === 0){
+            countdown.innerHTML = `${"🎊🎉"}`
+            clearInterval(timer);
+        }
+        else if(!isPaused){            
+            const minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            countdown.innerHTML = `${minutes}:${seconds}`
+            time--;
+        }
+    }
+    
+    function pauseTimer(){
+        isPaused = true;
+        document.querySelector(".paused").classList.add("paused-active");
+    }
+    function playTimer(){
+        isPaused = false;
+        document.querySelector(".paused").classList.remove("paused-active");
+    }
+    function keyPress(e){
+        if(e.keyCode === 32 && isPaused){
+            playTimer()
+        }
+        else if (e.keyCode === 32 && !isPaused){
+            pauseTimer()
+        }
+    }
+
+</script>
