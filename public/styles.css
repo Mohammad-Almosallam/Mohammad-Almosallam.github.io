@@ -5,6 +5,8 @@
      --background: var(--light);
      --foreground: var(--dark);
      --background-light: #FCFCFC;
+     --box-shadow: rgba(0, 0, 0, 0.1);
+     --glass-bg: rgba(255, 255, 255, 0.25);
  }
 
  /* dark theme  */
@@ -12,6 +14,8 @@
      --background: var(--dark);
      --foreground: var(--light);
      --background-light: #090909;
+     --box-shadow: rgba(188, 188, 188, 0.37);
+     --glass-bg: rgba(63, 63, 63, 0.25);
  }
 
  html,
@@ -118,6 +122,12 @@
      padding: 1rem 3rem;
  }
 
+ .nav-req {
+     display: flex;
+     align-items: center;
+     gap: 1rem;
+ }
+
  .logo {
      letter-spacing: 3px;
  }
@@ -125,6 +135,7 @@
  ul {
      display: flex;
      align-items: center;
+     padding: 0;
      gap: 1rem;
      list-style-type: none;
      text-decoration: none;
@@ -141,22 +152,96 @@
      transform: scale(1.2);
  }
 
- .countdown {
+ .notification {
      position: relative;
  }
 
  .paused {
-     display: block;
      position: absolute;
-     right: 37%;
+     width: 100%;
      margin: 0;
      top: 10px;
      opacity: 0;
      transition: all 0.5s ease-in-out;
  }
 
+ .break {
+     position: absolute;
+     margin: 0;
+     width: 100%;
+     top: -20px;
+     opacity: 0%;
+     transition: all 0.5s ease-in-out;
+ }
+
+ .break-active {
+     display: block;
+     top: -30px;
+     opacity: 100%;
+ }
+
  .paused-active {
      display: block;
      top: 0px;
      opacity: 100%;
+ }
+
+ @media screen and (min-width:600px) {
+
+     .menu-btn,
+     .close-menu {
+         display: none;
+     }
+
+ }
+
+ @media (max-width:600px) {
+     /* .menu-btn {
+         position: relative;
+     } */
+
+     ul {
+         display: block;
+         transform: translateX(300px);
+         transition: transform 0.5s ease-in-out, visibility 0.5s;
+         visibility: hidden;
+         position: fixed;
+         top: 0;
+         right: 0;
+         /* ---- glass effect ----- */
+         background: var(--glass-bg);
+         box-shadow: 0 0px 1px 0 var(--box-shadow);
+         backdrop-filter: blur(4px);
+         -webkit-backdrop-filter: blur(4px);
+         border-top-left-radius: 10px;
+         border: 1px solid rgba(255, 255, 255, 0.18);
+         /* ----------------------- */
+         height: 100%;
+         z-index: 2;
+         width: 40%;
+     }
+
+     .nav-req .active {
+         transform: translateX(0px);
+         transition: transform 0.5s ease-in-out, visibility 0s;
+         visibility: visible;
+     }
+
+     ul li {
+         margin: 1rem;
+     }
+
+     .close-menu {
+         margin: 1rem 0 0 1rem;
+         cursor: pointer;
+         transition: transform ease-in-out 0.5s;
+     }
+
+     .close-menu:hover {
+         transform: scale(1.2);
+     }
+
+     .nav {
+         padding: 1rem;
+     }
  }

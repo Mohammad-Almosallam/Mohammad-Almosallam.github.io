@@ -1,29 +1,54 @@
 <!-- Timer Implementation -->
 <script>
-    const startingMinutes = 0.1;
+    let startingMinutes = 25;
     let time = startingMinutes * 60;
     let isPaused = false;
+    let isBreak = false;
+    let timer = setInterval(updateTimer,1000)
     const countdown = document.getElementById('countdown');
+    
+    function replay(){
+        startingMinutes = 25
+        time = startingMinutes * 60
+        isBreak = false
+        timer = setInterval(updateTimer,1000)
+    }
 
-    let timer = setInterval(updateCountdown,1000)
     document.getElementById("pause").addEventListener("click",pauseTimer);
     document.getElementById("play").addEventListener("click",playTimer);
+    document.getElementById("edit").addEventListener("click",editTimer)
     window.addEventListener("keypress",keyPress);
     
-    function updateCountdown(){
+    function updateTimer(){
         if(time === 0){
-            countdown.innerHTML = `${"🎊🎉"}`
-            clearInterval(timer);
+            if(isBreak){
+                document.querySelector(".break").classList.remove("break-active");
+                clearInterval(timer);
+                replay()
+            }else{
+                document.querySelector(".break").classList.add("break-active");
+                clearInterval(timer);
+                breakTimer()
+            }
         }
         else if(!isPaused){            
-            const minutes = Math.floor(time / 60);
-            let seconds = time % 60;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-            countdown.innerHTML = `${minutes}:${seconds}`
             time--;
+            formatTime()
         }
     }
-    
+    function breakTimer(){
+        startingMinutes = 5
+        time = startingMinutes * 60
+        isBreak = true
+        timer = setInterval(updateTimer,1000)
+    }
+    function formatTime(){
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        countdown.innerHTML = `${minutes}:${seconds}`
+    }
     function pauseTimer(){
         isPaused = true;
         document.querySelector(".paused").classList.add("paused-active");
@@ -31,6 +56,10 @@
     function playTimer(){
         isPaused = false;
         document.querySelector(".paused").classList.remove("paused-active");
+    }
+    function editTimer(){
+        // pauseTimer()
+        // needs to be completed
     }
     function keyPress(e){
         if(e.keyCode === 32 && isPaused){

@@ -1,15 +1,20 @@
 <%- include("partials/header.ejs") %> 
     <div class="hero">
-        <div class="timer">
+        <div class="notifications">
             <h5 class="paused">Paused!</h5>
-            <h1 id="countdown">25:00</h1>
+            <h5 class="break">Break!</h5>
+        </div>
+        <div class="timer">
+            <h1 id="countdown"></h1>
         </div>
         <div class="actions">
             <ion-icon class="icons" id="play" name="play-sharp"></ion-icon>
             <ion-icon class="icons" id="pause" name="pause-outline"></ion-icon>
-            <ion-icon class="icons" name="timer-outline"></ion-icon>
+            <ion-icon class="icons" id="edit" name="timer-outline"></ion-icon>
         </div>
     </div>
+
+<%- include("partials/navBar.ejs") %> 
 <%- include("partials/timer.ejs") %> 
 <%- include("partials/darkTheme.ejs") %> 
 <%- include("partials/footer.ejs") %> 
