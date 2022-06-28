@@ -3,14 +3,14 @@
     let startingMinutes = 25;
     let time = startingMinutes * 60;
     let isPaused = false;
-    let isBreak = false;
+    let isBreak = true;
     let timer = setInterval(updateTimer,1000)
     const countdown = document.getElementById('countdown');
     
     function replay(){
         startingMinutes = 25
         time = startingMinutes * 60
-        isBreak = false
+        isBreak = true
         timer = setInterval(updateTimer,1000)
     }
 
@@ -21,11 +21,12 @@
     
     function updateTimer(){
         if(time === 0){
-            if(isBreak){
+            if(!isBreak){
                 document.querySelector(".break").classList.remove("break-active");
                 clearInterval(timer);
                 replay()
             }else{
+                animateConfetti()
                 document.querySelector(".break").classList.add("break-active");
                 clearInterval(timer);
                 breakTimer()
@@ -39,7 +40,7 @@
     function breakTimer(){
         startingMinutes = 5
         time = startingMinutes * 60
-        isBreak = true
+        isBreak = false
         timer = setInterval(updateTimer,1000)
     }
     function formatTime(){
@@ -68,6 +69,32 @@
         else if (e.keyCode === 32 && !isPaused){
             pauseTimer()
         }
+    }
+    function animateConfetti(){
+        var duration = 10 * 1000;
+        var end = Date.now() + duration;
+
+        (function frame() {
+          // launch a few confetti from the left edge
+          confetti({
+            particleCount: 7,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+          });
+          // and launch a few from the right edge
+          confetti({
+            particleCount: 7,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+          });
+
+          // keep going until we are out of time
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        }());
     }
 
 </script>
