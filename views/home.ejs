@@ -5,19 +5,15 @@
             <h5 class="break">Break!</h5>
         </div>
         <div class="timer">
-            <h1 id="countdown"></h1>
+            <h1 id="countdown">25:00</h1>
         </div>
         <div class="actions">
-            <ion-icon class="icons" id="play" name="play-sharp"></ion-icon>
-            <ion-icon class="icons" id="pause" name="pause-outline"></ion-icon>
-            <ion-icon class="icons" id="edit" name="timer-outline"></ion-icon>
+            <ion-icon class="icons" id="play" data-aos="fade-up" data-aos-duration="1000" name="play-sharp"></ion-icon>
+            <ion-icon class="icons" id="pause" data-aos="fade-up" data-aos-duration="1500" name="pause-outline"></ion-icon>
+            <ion-icon class="icons" id="edit" data-aos="fade-up" data-aos-duration="2000" name="timer-outline"></ion-icon>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
-<%- include("partials/navBar.ejs") %> 
-<%- include("partials/timer.ejs") %> 
-<%- include("partials/darkTheme.ejs") %> 
+    <script src="/timer.js"></script>
 <%- include("partials/footer.ejs") %> 
 
 

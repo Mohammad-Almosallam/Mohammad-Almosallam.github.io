@@ -28,7 +28,6 @@
      font-family: 'Poppins', sans-serif;
      font-weight: 100;
      font-size: 22px;
-     overflow: hidden;
  }
 
  a {
@@ -244,4 +243,27 @@
      .nav {
          padding: 1rem;
      }
+ }
+
+ .about-container {
+     margin: 0 30%;
+     font-size: 0.8rem;
+     font-weight: 200;
+     animation: paragraph 1s ease-in-out;
+ }
+
+ .paragraph {
+     margin: 2rem 0 0 0;
+ }
+
+
+ .paragraph p {
+     border-left: #FCFCFC 1px solid;
+     padding-left: 1rem;
+     text-align: justify;
+ }
+
+
+ span {
+     color: red;
  }

@@ -9,18 +9,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
     <title>POMO | <%=title %> </title>
 </head>
 <body>
     <div class="nav">
-        <div><p class="logo"><a href="/">POMO</a></p></div>
+        <div data-aos="zoom-out-right" data-aos-duration="1500" ><p class="logo"><a href="/">POMO</a></p></div>
         <div class="nav-req">
-            <ul class="">
-                <ion-icon class="close-menu" name="close-outline"></ion-icon>                
-                <li><a href="/contact">contact</a></li>
-                <li><a href="/about">about</a></li>
+            <ul>
+                <ion-icon class="close-menu" name="close-outline"></ion-icon>
+                <li data-aos="zoom-out-left" data-aos-duration="1500"><a href="/contact">contact</a></li>
+                <li data-aos="zoom-out-left" data-aos-duration="1000"><a href="/about">about</a></li>
             </ul>
             <ion-icon class="icons menu-btn" name="menu-outline"></ion-icon>
-            <ion-icon class="icons contrast-icon" id="theme-btn" name="contrast-outline"></ion-icon>
+            <ion-icon data-aos="zoom-out-left" class="icons contrast-icon" id="theme-btn" name="contrast-outline"></ion-icon>
         </div>
     </div>
