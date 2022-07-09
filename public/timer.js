@@ -1,4 +1,4 @@
-let startingMinutes = 0.1;
+let startingMinutes = 25;
 let time = startingMinutes * 60;
 let isPaused = false;
 let isBreak = true;
@@ -94,4 +94,3 @@ function animateConfetti(){
         }
     }());
 }
-
